@@ -5,6 +5,6 @@ RSpec.describe Ship do
     ship = ship.new("Cruiser", 3)
 
 
-    expect(card).to be_instance_of(Card)
+    expect(ship).to be_instance_of(Ship)
   end
 end
