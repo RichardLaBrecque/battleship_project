@@ -1,5 +1,6 @@
 require './lib/cell'
 require './lib/ship'
+require 'pry'
 RSpec.describe Cell do
   it 'exists' do
     cell = Cell.new("B4")
@@ -30,7 +31,7 @@ RSpec.describe Cell do
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
-
+binding.pry
     expect(cell.ship).to be_instance_of(Ship)
   end
 
@@ -67,5 +68,18 @@ RSpec.describe Cell do
 
     expect(cell.fired_upon?).to eq(true)
   end
+# render testing
+xit 'can render itself' do
+  cell_1 = Cell.new("B4")
+
+  expect(cell_1.render).to eq(".")
+end
+
+xit 'can render a missed shot' do
+  cell_1 = Cell.new("B4")
+  cell_1.fire_upon
+  expect(cell_1.render).to eq("M")
+end
+
 
 end
