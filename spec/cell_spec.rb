@@ -31,7 +31,6 @@ RSpec.describe Cell do
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
-binding.pry
     expect(cell.ship).to be_instance_of(Ship)
   end
 
@@ -96,42 +95,43 @@ xit 'can render itself with a ship there' do
   cell_2 = Cell.new("C3")
   cruiser = Ship.new("Cruiser", 3)
   cell_2.place_ship(cruiser)
-  expect (cell_2.render(true)).to eq ("S")
-end
+    expect (cell_2.render(true)).to eq ("S")
+  end
 
-xit 'can render itself with a ship there' do
-  cell_1 = Cell.new("B4")
-  cell_2 = Cell.new("C3")
-  cruiser = Ship.new("Cruiser", 3)
-  cell_2.place_ship(cruiser)
+  xit 'can render itself with a ship there' do
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
 
-  expect(cell_1.render).to eq(".")
-  expect(cell_2.render).to eq(".")
-end
+    expect(cell_1.render).to eq(".")
+    expect(cell_2.render).to eq(".")
+  end
 
-xit 'can render a hit' do
-  cell_1 = Cell.new("B4")
-  cell_2 = Cell.new("C3")
-  cruiser = Ship.new("Cruiser", 3)
-  cell_2.place_ship(cruiser)
-  cell_2.fire_upon
+  xit 'can render a hit' do
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.fire_upon
 
-  expect(cell_1.render).to eq(".")
-  expect(cell_2.render).to eq("H")
-end
+    expect(cell_1.render).to eq(".")
+    expect(cell_2.render).to eq("H")
+  end
 
-xit 'render a sink' do
-  cell_1 = Cell.new("B4")
-  cell_2 = Cell.new("C3")
-  cruiser = Ship.new("Cruiser", 3)
-  cell_2.place_ship(cruiser)
-  cruiser.hit
-  cruiser.hit
-  cruiser.hit
+  it 'render a sink' do
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.fire_upon
+    cruiser.hit
+    cruiser.hit
+    
 
-  expect(cell_1.render).to eq(".")
-  expect(cell_2.render).to eq("X")
-  #expect(cell_2.cruiser.sunk?).to eq(true)
-end
-
+    binding.pry
+    expect(cell_1.render).to eq(".")
+    expect(cell_2.render).to eq("X")
+    #expect(cell_2.cruiser.sunk?).to eq(true)
+  end
 end

@@ -1,9 +1,10 @@
+require './lib/ship.rb'
 class Cell
   attr_reader :coordinate, :ship
 
   def initialize(coordinate)
     @coordinate = coordinate
-    @ship
+    @ship = ship
     @fired_upon = false
   end
 
@@ -30,4 +31,18 @@ class Cell
     @fired_upon
   end
 
+  def render
+    if fired_upon? == false
+      return "."
+    end
+    if empty?
+      return "M"
+    elsif @ship.sunk? == true
+      return "X"
+    elseif fired_upon? == true && empty? == false
+      return "H"
+    #elsif (true)
+      #return "S"
+    end
+  end
 end
