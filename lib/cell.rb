@@ -21,8 +21,10 @@ class Cell
   end
 
   def fire_upon
-    if @fired_upon == false
+    if empty?
       @fired_upon =  true
+    elsif
+      @fired_upon = true 
       ship.hit
     end
   end
@@ -39,7 +41,7 @@ class Cell
       return "M"
     elsif @ship.sunk? == true
       return "X"
-    elseif fired_upon? == true && empty? == false
+    elsif fired_upon? == true && empty? == false
       return "H"
     #elsif (true)
       #return "S"

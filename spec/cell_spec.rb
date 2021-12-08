@@ -108,18 +108,18 @@ xit 'can render itself with a ship there' do
     expect(cell_2.render).to eq(".")
   end
 
-  xit 'can render a hit' do
+  it 'can render a hit' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
     cell_2.fire_upon
-
-    expect(cell_1.render).to eq(".")
+    cell_1.fire_upon
+    expect(cell_1.render).to eq("M")
     expect(cell_2.render).to eq("H")
   end
 
-  it 'render a sink' do
+  xit 'render a sink' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
@@ -127,11 +127,25 @@ xit 'can render itself with a ship there' do
     cell_2.fire_upon
     cruiser.hit
     cruiser.hit
-    
 
-    binding.pry
+
+    #binding.pry
     expect(cell_1.render).to eq(".")
     expect(cell_2.render).to eq("X")
+    #expect(cell_2.cruiser.sunk?).to eq(true)
+  end
+
+  xit 'renders the truth' do
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+
+
+
+    #binding.pry
+    expect(cell_1.render(true)).to eq(".")
+    expect(cell_2.render(true)).to eq("S")
     #expect(cell_2.cruiser.sunk?).to eq(true)
   end
 end
