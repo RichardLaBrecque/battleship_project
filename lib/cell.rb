@@ -24,7 +24,7 @@ class Cell
     if empty?
       @fired_upon =  true
     elsif
-      @fired_upon = true 
+      @fired_upon = true
       ship.hit
     end
   end
@@ -33,7 +33,10 @@ class Cell
     @fired_upon
   end
 
-  def render
+  def render(reveal = false)
+    if reveal == true && empty? == false
+      return "S"
+    end
     if fired_upon? == false
       return "."
     end
@@ -43,8 +46,7 @@ class Cell
       return "X"
     elsif fired_upon? == true && empty? == false
       return "H"
-    #elsif (true)
-      #return "S"
     end
   end
+
 end

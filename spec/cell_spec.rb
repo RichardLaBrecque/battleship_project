@@ -67,38 +67,20 @@ RSpec.describe Cell do
 
     expect(cell.fired_upon?).to eq(true)
   end
-# render testing
-xit 'can render itself' do
-  cell_1 = Cell.new("B4")
+  # render testing
+  it 'can render itself' do
+    cell_1 = Cell.new("B4")
 
-  expect(cell_1.render).to eq(".")
-end
-
-xit 'can render a missed shot' do
-  cell_1 = Cell.new("B4")
-  cell_1.fire_upon
-  expect(cell_1.render).to eq("M")
-end
-
-xit 'can render itself with a ship there' do
-  cell_1 = Cell.new("B4")
-  cell_2 = Cell.new("C3")
-  cruiser = Ship.new("Cruiser", 3)
-  cell_2.place_ship(cruiser)
-
-  expect(cell_1.render).to eq(".")
-  expect(cell_2.render).to eq(".")
-end
-
-xit 'can render itself with a ship there' do
-  cell_1 = Cell.new("B4")
-  cell_2 = Cell.new("C3")
-  cruiser = Ship.new("Cruiser", 3)
-  cell_2.place_ship(cruiser)
-    expect (cell_2.render(true)).to eq ("S")
+    expect(cell_1.render).to eq(".")
   end
 
-  xit 'can render itself with a ship there' do
+  it 'can render a missed shot' do
+    cell_1 = Cell.new("B4")
+    cell_1.fire_upon
+    expect(cell_1.render).to eq("M")
+  end
+
+  it 'can render itself with a hidden ship there' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
@@ -108,18 +90,20 @@ xit 'can render itself with a ship there' do
     expect(cell_2.render).to eq(".")
   end
 
-  it 'can render a hit' do
+
+  it 'can render a hits and misses' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
     cell_2.place_ship(cruiser)
     cell_2.fire_upon
+    #binding.pry
     cell_1.fire_upon
     expect(cell_1.render).to eq("M")
     expect(cell_2.render).to eq("H")
   end
 
-  xit 'render a sink' do
+  it 'render a sink' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
@@ -128,14 +112,11 @@ xit 'can render itself with a ship there' do
     cruiser.hit
     cruiser.hit
 
-
-    #binding.pry
-    expect(cell_1.render).to eq(".")
     expect(cell_2.render).to eq("X")
     #expect(cell_2.cruiser.sunk?).to eq(true)
   end
 
-  xit 'renders the truth' do
+  it 'renders the truth' do
     cell_1 = Cell.new("B4")
     cell_2 = Cell.new("C3")
     cruiser = Ship.new("Cruiser", 3)
@@ -145,6 +126,20 @@ xit 'can render itself with a ship there' do
 
     #binding.pry
     expect(cell_1.render(true)).to eq(".")
+    expect(cell_2.render(true)).to eq("S")
+    #expect(cell_2.cruiser.sunk?).to eq(true)
+  end
+
+  it 'renders the truth even after a shot' do
+    cell_1 = Cell.new("B4")
+    cell_2 = Cell.new("C3")
+    cruiser = Ship.new("Cruiser", 3)
+    cell_2.place_ship(cruiser)
+    cell_2.fire_upon
+
+
+    #binding.pry
+    expect(cell_2.render).to eq("H")
     expect(cell_2.render(true)).to eq("S")
     #expect(cell_2.cruiser.sunk?).to eq(true)
   end
