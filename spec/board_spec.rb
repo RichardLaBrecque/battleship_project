@@ -13,7 +13,7 @@ RSpec.describe Board do
   it 'has cells' do
     board = Board.new
 
-
+    expect(board.cells.class).to be_instance_of(Hash)
     expect(board.cells.keys.size).to eq(16)
   end
 end

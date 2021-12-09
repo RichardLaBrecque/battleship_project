@@ -14,11 +14,11 @@ end
 #  @cells = Hash.new { |hash, key| hash[cell.coordinate] = cell }
 #end
 # should this be a new class? CellMaker?
-cells_array = []
-coords = []
-coords.each do |cord|
-  cells_array << Cell.new(cord)
-end
-cells_array.each do |cell|
-  @cells[cell.coordinate] = cell
-end
+# cells_array = []
+# coords = []
+# coords.each do |cord|
+#   cells_array << Cell.new(cord)
+# end
+# cells_array.each do |cell|
+#   @cells[cell.coordinate] = cell
+# end
