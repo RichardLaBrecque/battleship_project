@@ -4,8 +4,8 @@ require './lib/ship'
 class Board
   attr_reader :cells
   def initialize
-    @cells = {}
-    cells_array = []
+    @cells = {} #cells exist here as hash key/value pair, key is cell coordinate string
+    cells_array = [] #array of cells to be moved to hash @cells
     @coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
     @coords.each do |cord|
       cells_array << Cell.new(cord)
@@ -16,7 +16,8 @@ class Board
   end
 
   def valid_coordinate?(coord)
-    @coords.include?(coord)
+    #@coords.include?(coord)
+    @cells.keys.include?(coord)
   end
 
   def valid_placement?(ship, placement)
@@ -26,15 +27,16 @@ class Board
     #check all cells empty
 
     # check length
-    if placement.length != ship.length
-      return false
-    end
+      if placement.length != ship.length
+        false
+      end
 
-    #split coordinates, convert to numerical
-    placement.each do |position|
+
+      #split coordinates, convert to numerical
+      placement.each do |position|
       @rows << position[0].ord
       @columns << position[1].ord
-    end
+      end
 
      #check diagonal placement
     if @rows.uniq.size != 1 && @columns.uniq.size != 1
