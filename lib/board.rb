@@ -19,6 +19,47 @@ class Board
     @coords.include?(coord)
   end
 
+  def valid_placement?(ship, placement)
+    @rows = []
+    @columns = []
+
+    #check all cells empty
+
+    # check length
+    if placement.length != ship.length
+      return false
+    end
+
+    #split coordinates, convert to numerical
+    placement.each do |position|
+      @rows << position[0].ord
+      @columns << position[1].ord
+    end
+
+     #check diagonal placement
+    if @rows.uniq.size != 1 && @columns.uniq.size != 1
+      return false
+    end
+
+    #check if row has only consecutive values
+    @rows.each_with_index do|val, index|
+      if index > 0 && @rows.uniq.size != 1
+        if (val - @rows[index-1]) != 1
+          return false
+        end
+      end
+    end
+
+    #check if column has only consecutive values
+    @columns.each_with_index do|val, index|
+      if index > 0 && @columns.uniq.size != 1
+        if (val - @columns[index-1]) != 1
+          return false
+        end
+      end
+    end
+    return true
+  end
 end
 
 
