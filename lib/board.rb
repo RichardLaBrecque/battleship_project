@@ -4,7 +4,7 @@ require './lib/ship'
 class Board
   attr_reader :cells
   def initialize
-    @cells = {}
+    @cells = {}  #creates hash key "string such as "a1" value cell object
     cells_array = []
     @coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
     @coords.each do |cord|
@@ -17,6 +17,7 @@ class Board
 
   def valid_coordinate?(coord)
     @coords.include?(coord)
+    #@cells.keys.include?(coords) #for after we refactor the ugly @ coords initialization
   end
 
   def valid_placement?(ship, placement)
@@ -24,7 +25,11 @@ class Board
     @columns = []
 
     #check all cells empty
-
+    placement.each do |coordinate|
+      if @cells[coordinate].empty? == false
+        return false
+      end
+    end
     # check length
     if placement.length != ship.length
       return false
@@ -59,6 +64,12 @@ class Board
       end
     end
     return true
+  end
+
+  def place (ship, coordinates)
+    coordinates.each do |coordinate|
+      @cells[coordinate].place_ship(ship)
+    end
   end
 end
 
