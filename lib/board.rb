@@ -25,7 +25,11 @@ class Board
     @columns = []
 
     #check all cells empty
-
+    placement.each do |coordinate|
+      if @cells[coordinate].empty? == false
+        return false
+      end
+    end
     # check length
       if placement.length != ship.length
         false
@@ -61,6 +65,12 @@ class Board
       end
     end
     return true
+  end
+
+  def place (ship, coordinates)
+    coordinates.each do |coordinate|
+      @cells[coordinate].place_ship(ship)
+    end
   end
 end
 

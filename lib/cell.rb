@@ -10,6 +10,7 @@ class Cell
 
   def empty?
     if @ship == nil
+      puts @ship
       return true
     else
       return false
