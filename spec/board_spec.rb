@@ -106,4 +106,14 @@ RSpec.describe Board do
 
     expect(board.cells["A1"].empty?).to be(true)
   end
+
+
+  it 'can render the board as a string' do
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    board.place(cruiser, ["A1", "A2", "A3"])
+
+
+    expect(board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+  end
 end
