@@ -86,4 +86,24 @@ RSpec.describe Board do
     expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq(false)
 
   end
+
+  it 'can place ship' do
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+    board.place(cruiser, ["A1", "A2", "A3"])
+
+
+    expect(board.cells["A1"].empty?).to be(false)
+    expect(board.cells["A2"].empty?).to be(false)
+    expect(board.cells["A3"].empty?).to be(false)
+  end
+
+  it 'can place ship' do
+    board = Board.new
+    cruiser = Ship.new("Cruiser", 3)
+
+
+
+    expect(board.cells["A1"].empty?).to be(true)
+  end
 end
