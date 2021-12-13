@@ -30,13 +30,13 @@ class Computer
       @ship_coord = [@valid_coords_length_3[rand(11)], @all_coords[rand(14)]]
       comp_check = true
         while @computer_board.valid_placement?(ship, @ship_coord, comp_check) == false do
-          puts "Thinking about first spot..."
+          #puts "Thinking about first spot..."
           @ship_coord.pop
           @ship_coord << @all_coords[rand(14)]
         end
       @ship_coord << @all_coords[rand(15)]
         while @computer_board.valid_placement?(ship, @ship_coord, ) == false do
-          puts "Thinking about second spot.."
+          #puts "Thinking about second spot.."
           @ship_coord.pop
           @ship_coord << @all_coords[rand(15)]
         end
