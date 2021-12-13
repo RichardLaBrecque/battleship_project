@@ -15,15 +15,17 @@ class Game
   end
 
 
-  def player_cruiser(curiser_coords)
-    coords = curiser_coords
+  def player_cruiser(cruiser_coords)
+    coords = cruiser_coords
     cruiser = Ship.new(cruiser, 3)
     coords.upcase!
-    until player_board.valid_placement?(cruiser, coords.split(" ")) do
+    until (player_board.valid_coordinate?(cruiser_coords.split(" ")[0]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[1]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[2]) && player_board.valid_placement?(cruiser,  cruiser_coords.split(" "))) do
         puts 'invalid coords please try again'
-    coords = gets.chomp
+     cruiser_coords = gets.chomp
+    coords = cruiser_coords.upcase!
+
     end
-    @player_board.place(cruiser, coords.split(" "))
+   @player_board.place(cruiser, coords.split(" "))
     puts player_board.render(true)
   end
 
@@ -34,6 +36,4 @@ class Game
     @player_board.place(submarine, coords.split(" "))
     puts player_board.render(true)
   end
-
-
 end

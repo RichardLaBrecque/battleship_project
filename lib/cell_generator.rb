@@ -36,12 +36,19 @@ require 'pry'
 #  reveal = true
 #  render_array << cell[1].render(reveal)
 #end
-game = Game.new#print " 1 2 3 4 \nA #{render_array[0]} #{render_array[1]} #{render_array[2]} #{render_array[3]}\nB #{render_array[4]} #{render_array[5]} #{render_array[6]} #{render_array[7]}\nC #{render_array[8]} #{render_array[9]} #{render_array[10]} #{render_array[11]}\nD #{render_array[12]} #{render_array[13]} #{render_array[14]} #{render_array[15]}"
+#print " 1 2 3 4 \nA #{render_array[0]} #{render_array[1]} #{render_array[2]} #{render_array[3]}\nB #{render_array[4]} #{render_array[5]} #{render_array[6]} #{render_array[7]}\nC #{render_array[8]} #{render_array[9]} #{render_array[10]} #{render_array[11]}\nD #{render_array[12]} #{render_array[13]} #{render_array[14]} #{render_array[15]}"
+
+
+game = Game.new
 puts "The cruiser three units long, and the Submarine is 2 units long"
 puts 'enter the squares for the cruiser (3 spaces)'
-cruiser_coords = gets.chomp
-  until game.player_board.valid_placement?(cruiser, curiser_coords) do
+ cruiser_coords = gets.chomp
+ cruiser_coords.upcase!
+ cruiser = Ship.new(cruiser, 3)
+ #binding.pry
+  until (game.player_board.valid_coordinate?(cruiser_coords.split(" ")[0]) && game.player_board.valid_coordinate?(cruiser_coords.split(" ")[1]) && game.player_board.valid_coordinate?(cruiser_coords.split(" ")[2]) && game.player_board.valid_placement?(cruiser,  cruiser_coords.split(" "))) do
       puts 'invalid coords please try again'
-  cruiser_coords = gets.chomp
+   cruiser_coords = gets.chomp
+   cruiser_coords.upcase!
 end
 game.player_cruiser(cruiser_coords)
