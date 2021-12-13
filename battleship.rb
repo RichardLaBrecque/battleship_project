@@ -23,8 +23,7 @@ cruiser = Ship.new(cruiser, 3)
 submarine = Ship.new(submarine, 2)
    puts 'enter the squares for the cruiser (3 spaces)'
 cruiser_coords = gets.chomp
-
 game.player_cruiser(cruiser_coords)
-#cruiser_coords.upcase!
-#game.player_board.place(cruiser, cruiser_coords.split(" "))
-#puts game.player_board.render(true)
+puts "Enter the sqaures for the Submarine (2 spaces)"
+submarine = gets.chomp
+game.player_sub(submarine)

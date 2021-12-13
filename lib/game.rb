@@ -22,9 +22,9 @@ class Game
 
   def player_sub(sub_coords)
     coords = sub_coords
-    cruiser = Ship.new(cruiser, 3)
+    submarine = Ship.new(submarine, 2)
     coords.upcase!
-    @player_board.place(sub, coords.split(" "))
+    @player_board.place(submarine, coords.split(" "))
     puts player_board.render(true)
   end
 
