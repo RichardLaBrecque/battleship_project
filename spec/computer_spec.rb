@@ -34,6 +34,14 @@ RSpec.describe Computer do
     expect(computer_player.place_ships(computer_sub)).to be_instance_of(Array)
   end
 
+  it 'can place cruiser' do
+    computer_player = Computer.new
+    computer_cruiser = Ship.new("Cruiser", 3)
+
+
+    #check returns array of placed cells
+    expect(computer_player.place_ships(computer_cruiser)).to be_instance_of(Array)
+  end
   xit 'computer placed cells are valid' do#might already be tested within method?
     computer_player = Computer.new
     computer_player.place_ships
