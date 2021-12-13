@@ -4,10 +4,12 @@ require './lib/ship'
 require './lib/computer'
 require 'pry'
 class Game
-  attr_reader :player_board, :computer_board, :player_cruiser
+  attr_reader :player_board, :computer_board, :player_ship_count, computer_ship_count
   def initialize
     @player_board = Board.new
     @computer_board = Board.new
+    @player_ship_count = 2
+    @computer_ship_count = 2
     #@cruiser = Ship.new(cruiser, 3)
     #@sub = Ship.new(sub, 2)
   end
