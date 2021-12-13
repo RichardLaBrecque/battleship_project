@@ -2,9 +2,9 @@ require './lib/cell'
 require './lib/ship'
 
 class Board
-  attr_reader :cells
+  attr_reader :cells, :coords
   def initialize
-    @cells = {} #cells exist here as hash key/value pair, key is cell coordinate string
+    @cells = {} #cells exist here as hash key/value pair, key is cell value is coordinate string
     cells_array = [] #array of cells to be moved to hash @cells
     @coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
 
@@ -23,6 +23,11 @@ class Board
   def valid_placement?(ship, placement)
       @rows = []
       @columns = []
+
+      #check coordinates are not the same
+      if placement.uniq.size == 1
+        return false
+      end
 
       #check all cells empty
       placement.each do |coordinate|
