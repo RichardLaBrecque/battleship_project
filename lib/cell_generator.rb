@@ -1,17 +1,18 @@
 require './lib/cell'
 require './lib/board'
 require './lib/ship'
+require './lib/game'
 require 'pry'
-@cells = {}
-cells_array = []
-coords = ["A1", "A2", "A3", "A4", "B1", "B2"]
-coords.each do |cord|
- @cells[coordinate] = Cell.new(cord)
-end
+#@cells = {}
+#cells_array = []
+#coords = ["A1", "A2", "A3", "A4", "B1", "B2"]
+#coords.each do |cord|
+# @cells[coordinate] = Cell.new(cord)
+#end
 #cells_array.each do |cell|
 #  @cells[cell.coordinate] = cell
 #
-p @cells
+#p @cells
 
 #board_1 = Board.new
 #
@@ -35,4 +36,12 @@ p @cells
 #  reveal = true
 #  render_array << cell[1].render(reveal)
 #end
-#print " 1 2 3 4 \nA #{render_array[0]} #{render_array[1]} #{render_array[2]} #{render_array[3]}\nB #{render_array[4]} #{render_array[5]} #{render_array[6]} #{render_array[7]}\nC #{render_array[8]} #{render_array[9]} #{render_array[10]} #{render_array[11]}\nD #{render_array[12]} #{render_array[13]} #{render_array[14]} #{render_array[15]}"
+game = Game.new#print " 1 2 3 4 \nA #{render_array[0]} #{render_array[1]} #{render_array[2]} #{render_array[3]}\nB #{render_array[4]} #{render_array[5]} #{render_array[6]} #{render_array[7]}\nC #{render_array[8]} #{render_array[9]} #{render_array[10]} #{render_array[11]}\nD #{render_array[12]} #{render_array[13]} #{render_array[14]} #{render_array[15]}"
+puts "The cruiser three units long, and the Submarine is 2 units long"
+puts 'enter the squares for the cruiser (3 spaces)'
+cruiser_coords = gets.chomp
+  until game.player_board.valid_placement?(cruiser, curiser_coords) do
+      puts 'invalid coords please try again'
+  cruiser_coords = gets.chomp
+end
+game.player_cruiser(cruiser_coords)
