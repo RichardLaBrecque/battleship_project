@@ -25,7 +25,7 @@ class Board
       @columns = []
 
       #check coordinates are not the same
-      if placement.uniq.size != ship.length && comp_check == false
+      if placement.uniq.size != placement.size
         return false
       end
 
