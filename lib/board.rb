@@ -20,12 +20,12 @@ class Board
     @coords.include?(coord)
   end
 
-  def valid_placement?(ship, placement)
+  def valid_placement?(ship, placement, comp_check = false)
       @rows = []
       @columns = []
 
       #check coordinates are not the same
-      if placement.uniq.size == 1
+      if placement.uniq.size != ship.length && comp_check == false
         return false
       end
 
@@ -36,8 +36,10 @@ class Board
         end
       end
       # check length
-      if placement.length != ship.length
-        return false
+      if comp_check == false
+        if placement.length != ship.length
+          return false
+        end
       end
 
       #split coordinates, convert to numerical
