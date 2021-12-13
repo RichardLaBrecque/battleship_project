@@ -18,7 +18,14 @@ class Game
     coords.upcase!
     @player_board.place(cruiser, coords.split(" "))
     puts player_board.render(true)
+  end
 
+  def player_sub(sub_coords)
+    coords = sub_coords
+    cruiser = Ship.new(cruiser, 3)
+    coords.upcase!
+    @player_board.place(sub, coords.split(" "))
+    puts player_board.render(true)
   end
 
 
