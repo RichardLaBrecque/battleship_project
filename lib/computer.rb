@@ -11,20 +11,25 @@ class Computer
 
   end
 
-
   def place_ships (ship)
+    @counter = 0
+    if ship.length == 2
+      #test if pos 1 is valid
+      @ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]]
 
-    #if ship.length == 2
-    #  @ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]]
-
-    #  while @computer_board.valid_placement?(ship, @ship_coord) == false do
+      until @computer_board.valid_placement?(ship, @ship_coord) == true do
       #puts "Thinking..."
-    #    @ship_coord.pop
-    #    @ship_coord << @all_coords[rand(16)]
-    #  end
-    #  @computer_board.place(ship, @ship_coord)
-    #puts "placed at #{@ship_coord}"
-    #end
+        @ship_coord.pop
+        @ship_coord << @all_coords[rand(16)]
+        @counter += 1
+          if @counter > 30
+          @ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]]
+          @counter = 0
+          end
+      end
+      @computer_board.place(ship, @ship_coord)
+    puts "placed at #{@ship_coord}"
+    end
 
     if ship.length == 3
     #first 2 cells
@@ -41,7 +46,6 @@ class Computer
         #add random last cell
     @ship_coord << @all_coords[rand(16)]
     puts "Checking ship coords #{@ship_coord}"
-    @counter = 0
       until @computer_board.valid_placement?(ship, @ship_coord) == true do
       puts "Thinking about third spot.."
       @ship_coord.delete_at(2)
