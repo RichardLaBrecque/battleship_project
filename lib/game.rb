@@ -31,9 +31,15 @@ class Game
 
   def player_sub(sub_coords)
     coords = sub_coords
-    submarine = Ship.new(submarine, 2)
+    sub = Ship.new(sub, 2)
     coords.upcase!
-    @player_board.place(submarine, coords.split(" "))
+    until (player_board.valid_coordinate?(sub_coords.split(" ")[0]) && player_board.valid_coordinate?(sub_coords.split(" ")[1]) && player_board.valid_placement?(sub,  sub_coords.split(" "))) do
+        puts 'invalid coords please try again'
+     sub_coords = gets.chomp
+    coords = sub_coords.upcase!
+
+    end
+   @player_board.place(sub, coords.split(" "))
     puts player_board.render(true)
   end
 end
