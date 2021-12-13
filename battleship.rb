@@ -14,8 +14,8 @@ puts "Enter p to play, Enter q to quit"
     puts "You now need to layout your two ships"
     puts "The cruiser three units long, and the Submarine is 2 units long"
     puts game.player_board.render
-    cruiser = Ship.new(cruiser, 3)
-    submarine = Ship.new(submarine, 2)
+    #cruiser = Ship.new(cruiser, 3)
+    #submarine = Ship.new(submarine, 2)
     puts 'enter the squares for the cruiser (3 spaces)'
     cruiser_coords = gets.chomp
     game.player_cruiser(cruiser_coords)
