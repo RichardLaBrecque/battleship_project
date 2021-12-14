@@ -22,6 +22,12 @@ puts "Enter p to play, Enter q to quit"
     puts "Enter the sqaures for the Submarine (2 spaces)"
     submarine = gets.chomp
     game.player_sub(submarine)
+    game.start
+  #  puts "Ships Placed, LETS GO"
+  #  puts "=============COMPUTER BOARD============="
+  #  puts game.computer_board.render
+  #  puts "==============PLAYER BOARD=============="
+  #  puts game.player_board.render
   else
     puts "goodbye"
   end

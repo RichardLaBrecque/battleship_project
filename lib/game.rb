@@ -42,4 +42,27 @@ class Game
    @player_board.place(sub, coords.split(" "))
     puts player_board.render(true)
   end
-end
+
+  def start
+
+    puts "Ships Placed, LETS GO"
+    puts "=============COMPUTER BOARD============="
+    puts computer_board.render
+    puts "==============PLAYER BOARD=============="
+    puts player_board.render
+    until @player_ship_count == 0 || @computer_ship_count == 0 do
+      puts "Enter the coordinate for your shot"
+      coord = gets.chomp
+        until computer_board.valid_coordinate?(coord.upcase)
+          puts "invalid coordinate try again"
+          coord = gets.chomp
+          computer_board.cells[coord.upcase].fire_upon
+        end
+        puts "=============COMPUTER BOARD============="
+        puts computer_board.render
+        puts "==============PLAYER BOARD=============="
+        puts player_board.render
+    end
+  end
+
+  end
