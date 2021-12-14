@@ -71,11 +71,16 @@ class Game
             if @player_board.cells[shot].render == "X"
               @player_ship_count -= 1
             end
+        puts "Your shot on #{coord.upcase} was "
         puts "=============COMPUTER BOARD============="
         puts @computer_player.computer_board.render
         puts "==============PLAYER BOARD=============="
         puts player_board.render
     end
+    if @player_ship_count == 0
+      puts "I WIN"
+    elsif @computer_ship_count == 0
+      puts "YOU WIN"
+    end
   end
-
   end
