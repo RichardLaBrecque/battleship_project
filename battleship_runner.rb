@@ -10,6 +10,7 @@ puts "Enter p to play, Enter q to quit"
   play = gets.chomp
   if play == "p"
     game = Game.new
+    game.setup
     puts "I have laid out my ships on the grid."
     puts "You now need to layout your two ships"
     puts "The cruiser three units long, and the Submarine is 2 units long"

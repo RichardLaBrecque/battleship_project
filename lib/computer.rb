@@ -1,6 +1,6 @@
 class Computer
-
-  def initialize
+attr_reader :computer_board
+def initialize
     @computer_board = Board.new
     @all_coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
     @valid_coords_length_3 = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2","D1", "D2"]
@@ -8,10 +8,9 @@ class Computer
   end
 
   def fire (board)# pick cell at random, check valid coord, only fire same place once
-
-    coord_shot = @open_coords[rand(16)]
-      until board.valid_coordinate?(coord_shot) && board.coord_shot.fired_upon?
-        coord_shot = @open_coords[rand(16)]
+    coord_shot = @all_coords[rand(16)]
+      until board.valid_coordinate?(coord_shot) && board.cells[coord_shot].fired_upon? == false do
+        coord_shot = @all_coords[rand(16)]
       end
     return coord_shot
   end
