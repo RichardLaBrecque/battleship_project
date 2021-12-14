@@ -63,9 +63,14 @@ class Game
         end
         @computer_player.computer_board.cells[coord.upcase].fire_upon
         #binding.pry
-        if @computer_player.computer_board.cells[coord.upcase].render == "X"
+          if @computer_player.computer_board.cells[coord.upcase].render == "X"
             @computer_ship_count -= 1
           end
+            shot = @computer_player.fire(@player_board)
+            @player_board.cells[shot].fire_upon
+            if @player_board.cells[shot].render == "X"
+              @player_ship_count -= 1
+            end
         puts "=============COMPUTER BOARD============="
         puts @computer_player.computer_board.render
         puts "==============PLAYER BOARD=============="
