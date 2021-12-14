@@ -8,7 +8,6 @@ def initialize
   end
 
   def fire (board)# pick cell at random, check valid coord, only fire same place once
-
     coord_shot = @all_coords[rand(16)]
       until board.valid_coordinate?(coord_shot) && board.cells[coord_shot].fired_upon? == false do
         coord_shot = @all_coords[rand(16)]
