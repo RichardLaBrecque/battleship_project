@@ -5,8 +5,20 @@ class Computer
     @all_coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
     @valid_coords_length_3 = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2","D1", "D2"]
 
+
   end
 
+  def fire (board)# fire at random, check valid coord, only fire same place once,
+    shots=0
+    open_coords = @all_coords
+    coord_shot = open_coords[index=rand(16-shots)]
+      until board.valid_coordinate?(coord_shot)
+        coord_shot = open_coords[index=rand(16-shots)]
+      end
+    shots += 1
+    open_coords.delete_at((index-1))
+    return coord_shot
+  end
 
   def place_ships (ship)
     counter = 0
