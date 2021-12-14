@@ -6,9 +6,9 @@ require './lib/computer'
 
 
 puts "Welcome to Battleship"
-puts "Enter p to play, Enter q to quit"
+puts "Enter p to play, Enter any other key to quit"
   play = gets.chomp
-  if play == "p"
+  while play == "p" do
     game = Game.new
     game.setup
     puts "I have laid out my ships on the grid."
@@ -24,11 +24,12 @@ puts "Enter p to play, Enter q to quit"
     submarine = gets.chomp
     game.player_sub(submarine)
     game.start
+    puts "to play again enter p, or any other key to exit"
+    play = gets.chomp
   #  puts "Ships Placed, LETS GO"
   #  puts "=============COMPUTER BOARD============="
   #  puts game.computer_board.render
   #  puts "==============PLAYER BOARD=============="
   #  puts game.player_board.render
-  else
-    puts "goodbye"
   end
+    puts "goodbye"

@@ -57,7 +57,7 @@ class Game
     until @player_ship_count == 0 || @computer_ship_count == 0 do
       puts "Enter the coordinate for your shot"
       coord = gets.chomp
-        until @computer_player.computer_board.valid_coordinate?(coord.upcase)
+        until @computer_player.computer_board.valid_coordinate?(coord.upcase) && @computer_player.computer_board.cells[coord.upcase].fired_upon? == false do
           puts "invalid coordinate try again"
           coord = gets.chomp
         end
