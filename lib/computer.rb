@@ -15,8 +15,10 @@ class Computer
     @counter = 0
     if ship.length == 2
       #test if pos 1 is valid
-      @ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]]
-
+      @ship_coord = [@all_coords[index0=rand(15)], @all_coords[rand(16)]]
+        until @computer_board.valid_coordinate?(@all_coords[index0]) && ((@computer_board.valid_coordinate?(@all_coords[index0+1]))||(@computer_board.valid_coordinate?(@all_coords[index0+4]))) do
+          @ship_coord = [@all_coords[index0=rand(15)], @all_coords[rand(16)]]
+        end
       until @computer_board.valid_placement?(ship, @ship_coord) == true do
       #puts "Thinking..."
         @ship_coord.pop
@@ -27,7 +29,7 @@ class Computer
           @counter = 0
           end
       end
-      @computer_board.place(ship, @ship_coord)
+      #@computer_board.place(ship, @ship_coord)
     puts "placed at #{@ship_coord}"
     end
 
@@ -68,6 +70,7 @@ class Computer
         end
       end
     end
+  @computer_board.place(ship, @ship_coord)
   return @ship_coord
   end
 end
