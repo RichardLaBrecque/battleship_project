@@ -76,6 +76,21 @@ class Game
         puts @computer_player.computer_board.render
         puts "==============PLAYER BOARD=============="
         puts player_board.render
+        if @computer_player.computer_board.cells[coord.upcase].render == "X"
+          puts "Your shot on #{coord.upcase} was a hit. That ship is sunk."
+        elsif @computer_player.computer_board.cells[coord.upcase].render == "H"
+          puts "Your shot on #{coord.upcase} was a hit."
+        elsif @computer_player.computer_board.cells[coord.upcase].render == "M"
+          puts "Your shot on #{coord.upcase} was a miss."
+        end
+        if @player_board.cells[shot].render == "X"
+          puts "My shot on #{shot} was a hit. That ship is sunk."
+        elsif @player_board.cells[shot].render == "H"
+          puts "My shot on #{shot} was a hit."
+        elsif @player_board.cells[shot].render == "M"
+          puts "My shot on #{shot} was a miss."
+        end
+
     end
     if @player_ship_count == 0
       puts "I WIN"
