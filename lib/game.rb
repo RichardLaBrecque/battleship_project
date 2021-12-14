@@ -7,11 +7,11 @@ class Game
   attr_reader :player_board, :computer_board, :player_ship_count, :computer_ship_count
   def initialize
     @player_board = Board.new
-    @computer_board = Board.new
+    @computer_player = Computer.new
     @player_ship_count = 2
     @computer_ship_count = 2
-    #@cruiser = Ship.new(cruiser, 3)
-    #@sub = Ship.new(sub, 2)
+    @cruiser = Ship.new("cruiser", 3)
+    @sub = Ship.new("sub", 2)
   end
 
 
@@ -43,23 +43,31 @@ class Game
     puts player_board.render(true)
   end
 
+  def setup
+    @computer_player.place_ships(@cruiser)
+    @computer_player.place_ships(@sub)
+  end
   def start
 
     puts "Ships Placed, LETS GO"
     puts "=============COMPUTER BOARD============="
-    puts computer_board.render
+    puts @computer_player.computer_board.render
     puts "==============PLAYER BOARD=============="
     puts player_board.render
     until @player_ship_count == 0 || @computer_ship_count == 0 do
       puts "Enter the coordinate for your shot"
       coord = gets.chomp
-        until computer_board.valid_coordinate?(coord.upcase)
+        until @computer_player.computer_board.valid_coordinate?(coord.upcase)
           puts "invalid coordinate try again"
           coord = gets.chomp
-          computer_board.cells[coord.upcase].fire_upon
         end
+        @computer_player.computer_board.cells[coord.upcase].fire_upon
+        #binding.pry
+        if @computer_player.computer_board.cells[coord.upcase].render == "X"
+            @computer_ship_count -= 1
+          end
         puts "=============COMPUTER BOARD============="
-        puts computer_board.render
+        puts @computer_player.computer_board.render
         puts "==============PLAYER BOARD=============="
         puts player_board.render
     end
