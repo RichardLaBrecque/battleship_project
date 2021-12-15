@@ -10,7 +10,7 @@ class Cell
 
   def empty?
     if @ship == nil
-      puts @ship
+      #puts @ship #if program breaks uncomment this
       return true
     else
       return false
