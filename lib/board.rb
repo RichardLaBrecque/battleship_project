@@ -5,9 +5,9 @@ class Board
   attr_reader :cells, :coords
   def initialize
     @cells = {} #cells exist here as hash key/value pair, key is cell value is coordinate string
-    cells_array = [] #array of cells to be moved to hash @cells
+    #cells_array = [] #array of cells to be moved to hash @cells
     @coords = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4","D1", "D2", "D3", "D4"]
- #@coords.each do |cord|
+
     @coords.each do |cord|
       @cells[cord] = Cell.new(cord)
       #cells_array << Cell.new(cord)
@@ -88,18 +88,3 @@ class Board
     return "  1 2 3 4 \nA #{render_array[0]} #{render_array[1]} #{render_array[2]} #{render_array[3]} \nB #{render_array[4]} #{render_array[5]} #{render_array[6]} #{render_array[7]} \nC #{render_array[8]} #{render_array[9]} #{render_array[10]} #{render_array[11]} \nD #{render_array[12]} #{render_array[13]} #{render_array[14]} #{render_array[15]} \n"
   end
 end
-
-
-#this was thought #1 dont think itll do what i want
-#until @cells.keys.length = 16 do
-#  @cells = Hash.new { |hash, key| hash[cell.coordinate] = cell }
-#end
-# should this be a new class? CellMaker?
-# cells_array = []
-# coords = []
-# coords.each do |cord|
-#   cells_array << Cell.new(cord)
-# end
-# cells_array.each do |cell|
-#   @cells[cell.coordinate] = cell
-# end
