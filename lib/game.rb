@@ -20,7 +20,7 @@ class Game
     cruiser = Ship.new(cruiser, 3)
     coords.upcase!
     until (player_board.valid_coordinate?(cruiser_coords.split(" ")[0]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[1]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[2]) && player_board.valid_placement?(cruiser,  cruiser_coords.split(" "))) do
-      puts 'invalid coords please try again'
+      puts 'Invalid coordinates. Please try again. Example: a1 b1 c1'
       cruiser_coords = gets.chomp
       coords = cruiser_coords.upcase!
     end
@@ -33,7 +33,7 @@ class Game
     sub = Ship.new(sub, 2)
     coords.upcase!
     until (player_board.valid_coordinate?(sub_coords.split(" ")[0]) && player_board.valid_coordinate?(sub_coords.split(" ")[1]) && player_board.valid_placement?(sub,  sub_coords.split(" "))) do
-        puts 'invalid coords please try again'
+        puts 'Invalid coordinates. Please try again.\nExample: b2 b3 '
      sub_coords = gets.chomp
     coords = sub_coords.upcase!
 
@@ -54,10 +54,10 @@ class Game
     puts "==============PLAYER BOARD=============="
     puts player_board.render
     until @player_ship_count == 0 || @computer_ship_count == 0 do
-      puts "Enter the coordinate for your shot"
+      puts "Enter the coordinate for your shot:"
       coord = gets.chomp
         until @computer_player.computer_board.valid_coordinate?(coord.upcase) && @computer_player.computer_board.cells[coord.upcase].fired_upon? == false do
-          puts "invalid coordinate try again"
+          puts "Invalid coordinate. Try again:"
           coord = gets.chomp
         end
         @computer_player.computer_board.cells[coord.upcase].fire_upon
