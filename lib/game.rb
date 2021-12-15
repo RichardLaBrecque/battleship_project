@@ -20,12 +20,11 @@ class Game
     cruiser = Ship.new(cruiser, 3)
     coords.upcase!
     until (player_board.valid_coordinate?(cruiser_coords.split(" ")[0]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[1]) && player_board.valid_coordinate?(cruiser_coords.split(" ")[2]) && player_board.valid_placement?(cruiser,  cruiser_coords.split(" "))) do
-        puts 'invalid coords please try again'
-     cruiser_coords = gets.chomp
-    coords = cruiser_coords.upcase!
-
+      puts 'invalid coords please try again'
+      cruiser_coords = gets.chomp
+      coords = cruiser_coords.upcase!
     end
-   @player_board.place(cruiser, coords.split(" "))
+    @player_board.place(cruiser, coords.split(" "))
     puts player_board.render(true)
   end
 
@@ -71,11 +70,10 @@ class Game
             if @player_board.cells[shot].render == "X"
               @player_ship_count -= 1
             end
-        puts "Your shot on #{coord.upcase} was "
-        puts "=============COMPUTER BOARD============="
-        puts @computer_player.computer_board.render
-        puts "==============PLAYER BOARD=============="
-        puts player_board.render
+  p "=============COMPUTER BOARD============="
+  puts "#{@computer_player.computer_board.render}"
+  p "==============PLAYER BOARD=============="
+  puts "#{player_board.render}"
         if @computer_player.computer_board.cells[coord.upcase].render == "X"
           puts "Your shot on #{coord.upcase} was a hit. That ship is sunk."
         elsif @computer_player.computer_board.cells[coord.upcase].render == "H"
