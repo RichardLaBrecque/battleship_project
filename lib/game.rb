@@ -15,7 +15,7 @@ class Game
   end
 
 
-  def player_cruiser(cruiser_coords)
+  def player_cruiser(cruiser_coords = ["J3", "J4", "J5"])
     coords = cruiser_coords
     cruiser = Ship.new(cruiser, 3)
     coords.upcase!
