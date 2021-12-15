@@ -3,13 +3,13 @@ require './lib/cell'
 require './lib/ship'
 require './lib/game'
 require './lib/computer'
-game = Game.new
 
 
 puts "Welcome to Battleship"
 puts "Enter p to play. Enter any other key to quit."
   play = gets.chomp
-  while play == "p" do
+while play == "p" do
+  game = Game.new
     game.setup
     puts "I have laid out my ships on the grid."
     puts "You now need to layout your two ships"
@@ -23,6 +23,7 @@ puts "Enter p to play. Enter any other key to quit."
     game.player_sub(submarine)
     game.start
     puts "To play again enter p. Enter any other key to exit."
+    play = "q"
     play = gets.chomp
   end
     puts "Goodbye"
