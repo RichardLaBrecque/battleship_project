@@ -19,7 +19,7 @@ class Computer
     if ship.length == 2
       ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]] #index0=rand15
       #test if pos 1 is valid, one of the options for pos 2 is valid
-        until @computer_board.valid_coordinate?(@all_coords[index0]) && ((@computer_board.valid_coordinate?(@all_coords[index0+1]))||(@computer_board.valid_coordinate?(@all_coords[index0+4]))) do
+        until @computer_board.valid_coordinate?(@all_coords[0]) && ((@computer_board.valid_coordinate?(@all_coords[0+1]))||(@computer_board.valid_coordinate?(@all_coords[0+4]))) do
           ship_coord = [@all_coords[rand(15)], @all_coords[rand(16)]] #index0=rand15
         end
       until @computer_board.valid_placement?(ship, ship_coord) == true do
