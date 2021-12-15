@@ -10,7 +10,7 @@ class Cell
 
   def empty?
     if @ship == nil
-      puts @ship
+      #puts @ship #if program breaks uncomment this
       return true
     else
       return false
@@ -35,19 +35,14 @@ class Cell
   def render(reveal = false)
     if reveal == true && empty? == false
       return "S"
-
     elsif fired_upon? == false
       return "."
-
     elsif empty?
       return "M"
-
     elsif @ship.sunk? == true
       return "X"
-
     else fired_upon? == true && empty? == false
       return "H"
     end
   end
-
 end
